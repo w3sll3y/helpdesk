@@ -46,12 +46,13 @@ function App(){
           name="Register"
           component={Register}
           options={{
+            headerLeft: ()=> null,
             headerTitle: () => <Header name="Help Desk" />,
             headerStyle: {
               height: 150,
               backgroundColor: '#29292E',
               shadowColor: '#000',
-              elevation: 25
+              elevation: 25,
             }
           }}
         />

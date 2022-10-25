@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import {auth} from '../../config'
 
 const Login = () => {
-  const navigation = useNavigation;
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
@@ -15,6 +15,15 @@ const Login = () => {
     catch (error) {
       alert(error.message)
     }
+  }
+
+  const forgotPassword = () => {
+    auth.sendPasswordResetEmail(email)
+    .then(() => {
+      alert('Reset de senha enviado')
+    }).catch((error) => {
+      alert(error.message)
+    })
   }
 
   return (
@@ -50,6 +59,12 @@ const Login = () => {
         style={{marginTop:20}}
       >
         <Text style={{fontWeight:'bold', fontSize: 16}}>Não tem conta? Registar-se</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {forgotPassword()}}
+        style={{marginTop:20}}
+      >
+        <Text style={{fontWeight:'bold', fontSize: 16}}>Esqueci a senha</Text>
       </TouchableOpacity>
     </View>
   )
