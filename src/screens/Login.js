@@ -49,7 +49,7 @@ const Login = () => {
         onPress={() => navigation.navigate('Register')}
         style={{marginTop:20}}
       >
-        <Text style={{fontWeight:'bold', fontSize: 16}}>Nao tem conta? Registar-se</Text>
+        <Text style={{fontWeight:'bold', fontSize: 16}}>Não tem conta? Registar-se</Text>
       </TouchableOpacity>
     </View>
   )
@@ -71,13 +71,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#000',
     marginBottom: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    maxWidth: '90%'
   },
   button: {
     marginTop: 50,
     height: 70,
     width: 250,
-    backgroundColor: '#026efd',
+    backgroundColor: '#00B37E',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50

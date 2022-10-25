@@ -33,12 +33,10 @@ function App(){
           name="Login"
           component={Login}
           options={{
-            headerTitle: () => <Header name="HelpDesk" />,
+            headerTitle: () => <Header name="Help Desk" />,
             headerStyle: {
               height: 150,
-              borderBottomLeftRadius: 50,
-              borderBottomRightRadius: 50,
-              backgroundColor: '#00E4D0',
+              backgroundColor: '#29292E',
               shadowColor: '#000',
               elevation: 25
             }
@@ -48,12 +46,10 @@ function App(){
           name="Register"
           component={Register}
           options={{
-            headerTitle: () => <Header name="HelpDesk" />,
+            headerTitle: () => <Header name="Help Desk" />,
             headerStyle: {
               height: 150,
-              borderBottomLeftRadius: 50,
-              borderBottomRightRadius: 50,
-              backgroundColor: '#00E4D0',
+              backgroundColor: '#29292E',
               shadowColor: '#000',
               elevation: 25
             }
@@ -72,9 +68,7 @@ function App(){
             headerTitle: () => <Header name="Dashboard" />,
             headerStyle: {
               height: 150,
-              borderBottomLeftRadius: 50,
-              borderBottomRightRadius: 50,
-              backgroundColor: '#00E4D0',
+              backgroundColor: '#29292E',
               shadowColor: '#000',
               elevation: 25
             }
