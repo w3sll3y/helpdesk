@@ -1,18 +1,22 @@
 import { Text, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import { db, auth } from "../../config";
+import { useNavigation } from "@react-navigation/native";
+
 
 const Dashboard = () => {
+  const navigation = useNavigation();
+
   const [name, setName] = useState('')
 
-  const changePassword = async () => {
-    return await auth.sendPasswordResetEmail(auth.currentUser.email)
-    .then(() => {
-      alert('Reset de e-mail enviado para e-mail')
-    }).catch((error) => {
-      alert(error.message)
-    })
-  }
+  // const changePassword = async () => {
+  //   return await auth.sendPasswordResetEmail(auth.currentUser.email)
+  //   .then(() => {
+  //     alert('Reset de e-mail enviado para e-mail')
+  //   }).catch((error) => {
+  //     alert(error.message)
+  //   })
+  // }
 
   useEffect(() => {
     db.collection('users')
@@ -30,28 +34,42 @@ const Dashboard = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text 
-        style={{fontSize: 20, fontWeight: 'bold'}}
+        style={{fontSize: 20, fontWeight: 'bold', marginTop: 50, color: "white"}}
       >
         Olá, {name.firstName}
       </Text>
-
-      <TouchableOpacity
-        onPress={() => changePassword()}
-        style={styles.button}
-      >
-        <Text
-          style={{fontSize: 22, fontWeight: 'bold'}}
+      <SafeAreaView style={styles.containerServices}>
+        <TouchableOpacity
+          style={styles.services}
         >
-          Alterar senha
-        </Text>
-      </TouchableOpacity>
+          <Text style={{fontWeight:'bold', fontSize: 16}}>Meus servicos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.services}
+        >
+          <Text style={{fontWeight:'bold', fontSize: 16}}>Carro</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
 
+      <SafeAreaView style={styles.containerServices}>
+        <TouchableOpacity
+          style={styles.services}
+        >
+          <Text style={{fontWeight:'bold', fontSize: 16}}>Moto</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.services}
+        >
+          <Text style={{fontWeight:'bold', fontSize: 16}}>Bicicleta</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    
       <TouchableOpacity
         onPress={() => {auth.signOut()}}
         style={styles.button}
       >
         <Text
-          style={{fontSize: 22, fontWeight: 'bold'}}
+          style={{fontSize: 16, fontWeight: 'bold', color: "white"}}
         >
           Sair
         </Text>
@@ -67,15 +85,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 100
+    backgroundColor: "#323238"
   },
   button: {
     marginTop: 50,
     height: 70,
     width: 250,
-    backgroundColor: '#00B37E',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50
+  },
+  containerServices: {
+    marginTop: 50,
+    display: "flex",
+    justifyContent: "space-around",
+    flexDirection: "row",
+    width: "85%",
+    color: "white"
+  },
+  services: {
+    height: 80,
+    width: 150,
+    backgroundColor: '#00B37E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+    color: "white"
   }
 })

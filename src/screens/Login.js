@@ -28,13 +28,14 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={{fontWeight: 'bold', fontSize: 26}}>
+      <Text style={{fontWeight: 'bold', fontSize: 26, marginTop: 100, color: "white"}}>
         Login
       </Text>
       <View style={{marginTop: 40}}>
         <TextInput 
           style={styles.textInput}
           placeholder='E-mail'
+          placeholderTextColor="#c8c8c8"
           onChangeText={(email) => setEmail(email)}
           autoCapitalize='none'
           autoCorrect={false}
@@ -43,6 +44,7 @@ const Login = () => {
           style={styles.textInput}
           placeholder='Password'
           onChangeText={(password) => setPassword(password)}
+          placeholderTextColor="#c8c8c8"
           autoCapitalize='none'
           autoCorrect={false}
           secureTextEntry={true}
@@ -52,19 +54,19 @@ const Login = () => {
         onPress={() => loginUser(email, password)}
         style={styles.button}
       >
-        <Text style={{fontWeight:'bold', fontSize: 22}}>Login</Text>
+        <Text style={{fontWeight:'bold', fontSize: 22, color: "white"}}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Register')}
         style={{marginTop:20}}
       >
-        <Text style={{fontWeight:'bold', fontSize: 16}}>Não tem conta? Registar-se</Text>
+        <Text style={{fontWeight:'bold', fontSize: 16, color: "white"}}>Não tem conta? Registar-se</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {forgotPassword()}}
         style={{marginTop:20}}
       >
-        <Text style={{fontWeight:'bold', fontSize: 16}}>Esqueci a senha</Text>
+        <Text style={{fontWeight:'bold', fontSize: 16, marginTop: -10, color: "white"}}>Esqueci a senha</Text>
       </TouchableOpacity>
     </View>
   )
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 100
+    backgroundColor: "#323238"
   },
   textInput: {
     paddingTop: 20,
@@ -87,7 +89,8 @@ const styles = StyleSheet.create({
     borderBottomColor: '#000',
     marginBottom: 10,
     textAlign: 'center',
-    maxWidth: '90%'
+    maxWidth: '90%',
+    color: "white"
   },
   button: {
     marginTop: 50,

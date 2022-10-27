@@ -42,24 +42,27 @@ const Register = () => {
   }
   return (
     <View style={styles.container}>
-      <Text style={{fontWeight:'bold', 'fontSize': 23}}>
+      <Text style={{fontWeight:'bold', 'fontSize': 23, marginTop: 100, color: "white"}}>
         Registrar aqui!
       </Text>
       <View style={{marginTop: 40}}>
         <TextInput 
           style={styles.textInput}
+          placeholderTextColor="#c8c8c8"
           placeholder="Primeiro Nome"
           onChangeText={(firstName) => setfirstName(firstName)}
           autoCorrect={false}
         />
         <TextInput 
           style={styles.textInput}
+          placeholderTextColor="#c8c8c8"
           placeholder="Sobrenome"
           onChangeText={(lastName) => setlastName(lastName)}
           autoCorrect={false}
         />
         <TextInput 
           style={styles.textInput}
+          placeholderTextColor="#c8c8c8"
           placeholder="Email"
           onChangeText={(email) => setEmail(email)}
           autoCorrect={false}
@@ -68,6 +71,7 @@ const Register = () => {
         />
         <TextInput 
           style={styles.textInput}
+          placeholderTextColor="#c8c8c8"
           placeholder="Password"
           onChangeText={(password) => setPassword(password)}
           autoCapitalize='none'
@@ -79,13 +83,13 @@ const Register = () => {
         onPress={() => registerUser(email, password, firstName, lastName)}
         style={styles.button}
       >
-        <Text style={{fontWeight:'bold', fontSize: 22}}>Registrar</Text>
+        <Text style={{fontWeight:'bold', fontSize: 22, color: "white"}}>Registrar</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Login')}
         style={{marginTop:20}}
       >
-        <Text style={{fontWeight:'bold', fontSize: 16}}>Já tem conta? Voltar</Text>
+        <Text style={{fontWeight:'bold', fontSize: 16, color: "white"}}>Já tem conta? Voltar</Text>
       </TouchableOpacity>
     </View>
   )
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 100
+    backgroundColor: "#323238"
   },
   textInput: {
     paddingTop: 20,
@@ -107,6 +111,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#000',
     marginBottom: 10,
+    color: "white",
     textAlign: 'center',
     maxWidth: '90%'
   },

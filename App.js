@@ -7,6 +7,7 @@ import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
 import Dashboard from "./src/screens/Dashboard";
 import Header from "./src/components/Header";
+import Services from './src/screens/Services'
 
 const Stack = createStackNavigator();
 
@@ -36,7 +37,7 @@ function App(){
             headerTitle: () => <Header name="Help Desk" />,
             headerStyle: {
               height: 150,
-              backgroundColor: '#29292E',
+              backgroundColor: '#121214',
               shadowColor: '#000',
               elevation: 25
             }
@@ -50,7 +51,21 @@ function App(){
             headerTitle: () => <Header name="Help Desk" />,
             headerStyle: {
               height: 150,
-              backgroundColor: '#29292E',
+              backgroundColor: '#121214',
+              shadowColor: '#000',
+              elevation: 25,
+            }
+          }}
+        />
+        <Stack.Screen 
+          name="Services"
+          component={Services}
+          options={{
+            headerLeft: ()=> null,
+            headerTitle: () => <Header name="Help Desk FindServices" />,
+            headerStyle: {
+              height: 150,
+              backgroundColor: '#121214',
               shadowColor: '#000',
               elevation: 25,
             }
@@ -69,7 +84,7 @@ function App(){
             headerTitle: () => <Header name="Dashboard" />,
             headerStyle: {
               height: 150,
-              backgroundColor: '#29292E',
+              backgroundColor: '#121214',
               shadowColor: '#000',
               elevation: 25
             }
