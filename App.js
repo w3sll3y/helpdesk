@@ -7,7 +7,10 @@ import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
 import Dashboard from "./src/screens/Dashboard";
 import Header from "./src/components/Header";
-import Services from './src/screens/Services'
+import CarScreen from './src/screens/CarScreen'
+import MotoScreen from "./src/screens/MotoScreen";
+import BikeScreen from "./src/screens/BikeScreen";
+import MyServices from "./src/screens/MyServices";
 
 const Stack = createStackNavigator();
 
@@ -57,20 +60,6 @@ function App(){
             }
           }}
         />
-        <Stack.Screen 
-          name="Services"
-          component={Services}
-          options={{
-            headerLeft: ()=> null,
-            headerTitle: () => <Header name="Help Desk FindServices" />,
-            headerStyle: {
-              height: 150,
-              backgroundColor: '#121214',
-              shadowColor: '#000',
-              elevation: 25,
-            }
-          }}
-        />
       </Stack.Navigator>
     );
   }
@@ -90,6 +79,66 @@ function App(){
             }
           }}
         />
+
+      <Stack.Screen 
+        name="CarScreen"
+        component={CarScreen}
+        options={{
+          headerLeft: ()=> null,
+          headerTitle: () => <Header name="Carros" />,
+          headerStyle: {
+            height: 150,
+            backgroundColor: '#121214',
+            shadowColor: '#000',
+            elevation: 25
+          }
+        }}
+      />
+
+      <Stack.Screen 
+        name="MotoScreen"
+        component={MotoScreen}
+        options={{
+          headerLeft: ()=> null,
+          headerTitle: () => <Header name="Motos" />,
+          headerStyle: {
+            height: 150,
+            backgroundColor: '#121214',
+            shadowColor: '#000',
+            elevation: 25
+          }
+        }}
+      />
+
+      <Stack.Screen 
+        name="BikeScreen"
+        component={BikeScreen}
+        options={{
+          headerLeft: ()=> null,
+          headerTitle: () => <Header name="Bicicletas" />,
+          headerStyle: {
+            height: 150,
+            backgroundColor: '#121214',
+            shadowColor: '#000',
+            elevation: 25
+          }
+        }}
+      />
+
+    <Stack.Screen 
+        name="MyServices"
+        component={MyServices}
+        options={{
+          headerLeft: ()=> null,
+          headerTitle: () => <Header name="Meus servicos" />,
+          headerStyle: {
+            height: 150,
+            backgroundColor: '#121214',
+            shadowColor: '#000',
+            elevation: 25
+          }
+        }}
+      />
     </Stack.Navigator>
   );
 }

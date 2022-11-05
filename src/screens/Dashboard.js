@@ -1,11 +1,8 @@
 import { Text, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import { db, auth } from "../../config";
-import { useNavigation } from "@react-navigation/native";
 
-
-const Dashboard = () => {
-  const navigation = useNavigation();
+const Dashboard = ({navigation}) => {
 
   const [name, setName] = useState('')
 
@@ -41,11 +38,13 @@ const Dashboard = () => {
       <SafeAreaView style={styles.containerServices}>
         <TouchableOpacity
           style={styles.services}
+          onPress={() => navigation.navigate('MyServices')}
         >
           <Text style={{fontWeight:'bold', fontSize: 16}}>Meus servicos</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.services}
+          onPress={() => navigation.navigate('CarScreen')}
         >
           <Text style={{fontWeight:'bold', fontSize: 16}}>Carro</Text>
         </TouchableOpacity>
@@ -54,11 +53,13 @@ const Dashboard = () => {
       <SafeAreaView style={styles.containerServices}>
         <TouchableOpacity
           style={styles.services}
+          onPress={() => navigation.navigate('MotoScreen')}
         >
           <Text style={{fontWeight:'bold', fontSize: 16}}>Moto</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.services}
+          onPress={() => navigation.navigate('BikeScreen')}
         >
           <Text style={{fontWeight:'bold', fontSize: 16}}>Bicicleta</Text>
         </TouchableOpacity>
