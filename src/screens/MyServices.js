@@ -1,23 +1,39 @@
-import { Text, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, SafeAreaView, TouchableOpacity, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import { db, auth } from "../../config";
-import { FlatList } from "react-native-gesture-handler";
+import { doc, getDoc  } from 'firebase/firestore'
+// import { FlatList } from "react-native-gesture-handler";
 
 const MyServices = ({navigation}) => {
 
   const [orders, setOrders] = useState([])
 
+  let loadList = async () => {
+    const docRef = doc(db, "orders");
+    const docSnap = await getDoc(docRef);
+
+    const servicos = docSnap.data();
+    setOrders(servicos)
+    console.log('===============')
+    console.log(servicos)
+  }
+
   useEffect(() => {
-    const orders = db.collection('orders').onSnapshot(querySnapshot => {
-      const data = querySnapshot.docs.map(doc => {
-        return {
-          ...doc.data()
-        }
-      })
-      setOrders(data)
-    })
-    return () => orders()
-  }, [])
+    loadList()
+  },[])
+
+  // , where("userId", "==", auth.currentUser.uid)
+  // useEffect(() => {
+  //   const orders = db.collection('orders').onSnapshot(querySnapshot => {
+  //     const data = querySnapshot.docs.map(doc => {
+  //       return {
+  //         ...doc.data()
+  //       }
+  //     })
+  //     setOrders(data)
+  //   })
+  //   return () => orders()
+  // }, [])
 
   // useEffect(() => {
   //   db.collection('orders')
@@ -38,9 +54,13 @@ const MyServices = ({navigation}) => {
         style={{fontSize: 20, fontWeight: 'bold', marginTop: 50, color: "white"}}
       >
                 Olá, {orders.status}
-
-
       </Text>
+      
+      <FlatList 
+        data={orders}
+        keyExtractor={item => item.id}
+      />
+      
       <TouchableOpacity
         onPress={() => navigation.navigate('Dashboard')}
         style={styles.button}

@@ -1,27 +1,35 @@
 {
   "name": "helpdesk",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
     "@react-native-firebase/firestore": "^16.4.2",
+    "@react-native-google-signin/google-signin": "^8.2.1",
     "@react-native-picker/picker": "2.4.2",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.1",
     "@react-navigation/stack": "^6.3.2",
     "expo": "~46.0.16",
+    "expo-auth-session": "3.7.1",
+    "expo-random": "~12.3.0",
+    "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "firebase": "^9.6.11",
+    "gapi-script": "^1.2.0",
     "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-google-login": "^5.2.2",
     "react-native": "0.69.6",
     "react-native-gesture-handler": "~2.5.0",
+    "react-native-google-signin": "^2.1.1",
     "react-native-safe-area-context": "4.3.1",
-    "react-native-screens": "~3.15.0"
+    "react-native-screens": "~3.15.0",
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

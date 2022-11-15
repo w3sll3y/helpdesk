@@ -2,11 +2,36 @@ import { View, Text, TouchableOpacity, TextInput, StyleSheet } from "react-nativ
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {auth} from '../../config'
+import * as AuthSession from 'expo-auth-session';
+import {GoogleAuthProvider } from 'firebase/auth' 
 
 const Login = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  async function handleGoogleSignIn() {
+    const CLIENT_ID = '898735093560-8oi5vm5k1978ffhse7r3l1k7v8mj5jca.apps.googleusercontent.com'
+    const REDIRECT_URI = 'https://auth.expo.io/@w3sll3yfacul/helpdesk'
+    const RESPONSE_TYPE = 'token';
+    const SCOPE = encodeURI('profile email');
+
+    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`
+    const response = await AuthSession.startAsync({ authUrl });
+    console.log(response)
+    const {type, params} = await AuthSession
+      .startAsync({authUrl})
+    
+      if( type === 'success') {
+        const provider = new GoogleAuthProvider();
+        try{ 
+          await auth.signInWithRedirect(params.acess_token, provider)
+        }
+        catch (error) {
+          alert(error.message)
+        }
+      }
+  }
   
   loginUser = async (email, password) => {
     try{ 
@@ -56,6 +81,15 @@ const Login = () => {
       >
         <Text style={{fontWeight:'bold', fontSize: 22, color: "white"}}>Login</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={handleGoogleSignIn}
+        style={styles.button}
+      >
+        <Text style={{fontWeight:'bold', fontSize: 22, color: "white"}}>Login Google</Text>
+      </TouchableOpacity>
+
+
       <TouchableOpacity
         onPress={() => navigation.navigate('Register')}
         style={{marginTop:20}}
