@@ -10,6 +10,7 @@ import Header from "./src/components/Header";
 import CarScreen from './src/screens/CarScreen'
 import MotoScreen from "./src/screens/MotoScreen";
 import BikeScreen from "./src/screens/BikeScreen";
+import Comments from "./src/screens/Comments";
 import MyServices from "./src/screens/MyServices";
 
 const Stack = createStackNavigator();
@@ -139,6 +140,21 @@ function App(){
           }
         }}
       />
+
+    <Stack.Screen 
+      name="Comments"
+      component={Comments}
+      options={{
+        headerLeft: ()=> null,
+        headerTitle: () => <Header name="Comentarios" />,
+        headerStyle: {
+          height: 150,
+          backgroundColor: '#121214',
+          shadowColor: '#000',
+          elevation: 25
+        }
+      }}
+    />
     </Stack.Navigator>
   );
 }

@@ -15,7 +15,6 @@
       "oauth_client": [
         {
           "client_id": "898735093560-n1df759ruft9mbavr97voijqblrtamcr.apps.googleusercontent.com",
-          // "client_id": "896234475732-a39r0g1fo175iajkloro1ph12ns7kmu4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.helpdesk",
@@ -36,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "898735093560-95ppc3srt3g9merhmkfbth2a5uucgff9.apps.googleusercontent.com",
+              "client_id": "898735093560-8oi5vm5k1978ffhse7r3l1k7v8mj5jca.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

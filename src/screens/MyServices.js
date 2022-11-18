@@ -1,73 +1,53 @@
-import { Text, StyleSheet, SafeAreaView, TouchableOpacity, FlatList } from "react-native";
+import { Text, StyleSheet, SafeAreaView, View , ScrollView} from "react-native";
 import React, { useEffect, useState } from "react";
 import { db, auth } from "../../config";
-import { doc, getDoc  } from 'firebase/firestore'
-// import { FlatList } from "react-native-gesture-handler";
 
 const MyServices = ({navigation}) => {
 
-  const [orders, setOrders] = useState([])
-
-  let loadList = async () => {
-    const docRef = doc(db, "orders");
-    const docSnap = await getDoc(docRef);
-
-    const servicos = docSnap.data();
-    setOrders(servicos)
-    console.log('===============')
-    console.log(servicos)
-  }
+  const [name, setName] = useState('')
+  const [currentPost, setCurrentPost] = useState({});
+  const [allcoments, setAllcoments] = useState([]);
 
   useEffect(() => {
-    loadList()
-  },[])
+    db.collection('users')
+    .doc(auth.currentUser.uid).get()
+    .then((snapshot) => {
+      if(snapshot.exists) {
+        console.log(snapshot.data())
+        setName(snapshot.data())
+      }
+      else {
+        console.log('Usuario inexistente')
+      }
+    })
 
-  // , where("userId", "==", auth.currentUser.uid)
-  // useEffect(() => {
-  //   const orders = db.collection('orders').onSnapshot(querySnapshot => {
-  //     const data = querySnapshot.docs.map(doc => {
-  //       return {
-  //         ...doc.data()
-  //       }
-  //     })
-  //     setOrders(data)
-  //   })
-  //   return () => orders()
-  // }, [])
-
-  // useEffect(() => {
-  //   db.collection('orders')
-  //   .doc(auth.currentUser.uid).get()
-  //   .then((snapshot) => {
-  //     if(snapshot.exists) {
-  //       setOrders(snapshot.data())
-  //     }
-  //     else {
-  //       console.log('Cadastros inexistentes')
-  //     }
-  //   })
-  // }, [])
+    db.collection('orders')
+    .onSnapshot((snapshot) => {
+      let dallcomments = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      }))
+      console.log(dallcomments)
+      setAllcoments((prev) => [...prev, ...dallcomments])
+    })
+    
+  }, [])
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text 
-        style={{fontSize: 20, fontWeight: 'bold', marginTop: 50, color: "white"}}
-      >
-                Olá, {orders.status}
-      </Text>
-      
-      <FlatList 
-        data={orders}
-        keyExtractor={item => item.id}
-      />
-      
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Dashboard')}
-        style={styles.button}
-      >
-        <Text style={{fontWeight:'bold', fontSize: 22, color: "white"}}>Voltar</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <ScrollView style={styles.container}>
+      <View style={{ maxWidth: '90%', marginBottom: 20}}>
+        {allcoments.map((person) => {
+          return (
+            <View style={{display: 'flex', flexDirection:'column', width: 200, color: 'white', marginBottom: 15}}>
+              <Text style={{color: 'white', margin: 2}}>Oficia: {person.oficinaSelected} </Text>
+              <Text style={{color: 'white', margin: 2}}>Veiculo: {person.serviceSelected}</Text>
+              <Text style={{color: 'white', margin: 2}}>Servico: {person.typeService}</Text>
+              <Text style={{color: 'white', margin: 2}}>Status: {person.status}</Text>
+            </View>
+          );
+        })}
+      </View>
+    </ScrollView>
   )
 
 }
@@ -77,32 +57,7 @@ export default MyServices
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: "#323238"
-  },
-  button: {
-    marginTop: 50,
-    height: 70,
-    width: 250,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50
-  },
-  containerServices: {
-    marginTop: 50,
-    display: "flex",
-    justifyContent: "space-around",
-    flexDirection: "row",
-    width: "85%",
-    color: "white"
-  },
-  services: {
-    height: 80,
-    width: 150,
-    backgroundColor: '#00B37E',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-    color: "white"
+    backgroundColor: "#323238",
+    padding: 5
   }
 })

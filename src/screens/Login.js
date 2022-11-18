@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   async function handleGoogleSignIn() {
-    const CLIENT_ID = '898735093560-8oi5vm5k1978ffhse7r3l1k7v8mj5jca.apps.googleusercontent.com'
+    const CLIENT_ID = '898735093560-n1df759ruft9mbavr97voijqblrtamcr.apps.googleusercontent.com'
     const REDIRECT_URI = 'https://auth.expo.io/@w3sll3yfacul/helpdesk'
     const RESPONSE_TYPE = 'token';
     const SCOPE = encodeURI('profile email');
@@ -84,9 +84,9 @@ const Login = () => {
 
       <TouchableOpacity
         onPress={handleGoogleSignIn}
-        style={styles.button}
+        style={styles.buttonGoogle}
       >
-        <Text style={{fontWeight:'bold', fontSize: 22, color: "white"}}>Login Google</Text>
+        <Text style={{fontWeight:'bold', fontSize: 22, color: "white"}}>Google</Text>
       </TouchableOpacity>
 
 
@@ -131,6 +131,15 @@ const styles = StyleSheet.create({
     height: 70,
     width: 250,
     backgroundColor: '#00B37E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50
+  },
+  buttonGoogle: {
+    marginTop: 10,
+    height: 70,
+    width: 250,
+    backgroundColor: '#db4a39',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50

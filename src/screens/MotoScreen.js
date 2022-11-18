@@ -41,7 +41,7 @@ const MotoScreen = ({navigation}) => {
             }>
             {
               oficina.map(of => {
-                return <Picker.Item label={of} value={of} style={{width: "60%"}}/>
+                return <Picker.Item label={of} value={of} style={{width: "60%", color: '#00B37E'}}/>
               })
             }
           </Picker>
@@ -56,7 +56,7 @@ const MotoScreen = ({navigation}) => {
             }>
             {
               service.map(serv => {
-                return <Picker.Item label={serv} value={serv} style={{width: "60%"}}/>
+                return <Picker.Item label={serv} value={serv} style={{width: "60%", color: '#00B37E'}}/>
               })
             }
           </Picker>
@@ -75,6 +75,12 @@ const MotoScreen = ({navigation}) => {
         style={styles.button}
       >
         <Text style={{fontWeight:'bold', fontSize: 22, color: "white"}}>Voltar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Comments')}
+        style={{marginTop:20}}
+      >
+        <Text style={{fontWeight:'bold', fontSize: 16, color: "white"}}>Comentarios</Text>
       </TouchableOpacity>
     </View>
   )
